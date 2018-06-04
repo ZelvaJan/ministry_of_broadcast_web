@@ -1,0 +1,29 @@
+.MainPage {
+    text-align: center;
+    height: 2000px;
+    background-color: rgb(245, 248, 231);
+}
+
+.MainPage__background {
+    background: url("../assets/background2.png"), linear-gradient(to bottom,#32656b 0,#669a91 48%,#9cbeaf 92%,#15231a 100%);
+    background-size: 1920px 1080px;
+    width: 100%;
+    height: 1080px;
+    background-repeat: no-repeat;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+
+.MainPage__background__parallax {
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.MainPage__title {
+    position: absolute;
+    top: 100px;
+    z-index: 10;
+}
