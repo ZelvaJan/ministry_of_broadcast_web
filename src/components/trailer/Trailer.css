@@ -1,0 +1,26 @@
+.Trailer__root {
+    display: inline-block;
+    height: 100%;
+    min-width: 320px;
+    background: url("../../assets/bg_trailer.png") repeat-x center center;
+    background-size: cover;
+    position: relative;
+}
+
+.Trailer__header {
+    margin-top: 50px;
+    margin-bottom: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Trailer__header span {
+    margin: 0 20px 20px;
+}
+
+.Trailer__scrollText {
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
+}

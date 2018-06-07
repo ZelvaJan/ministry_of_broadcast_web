@@ -9,6 +9,7 @@
 # production
 /build
 /.idea
+s3-upload.js
 
 # misc
 .DS_Store
