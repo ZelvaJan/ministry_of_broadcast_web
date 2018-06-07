@@ -1,0 +1,20 @@
+.About__root {
+    display: inline-block;
+    height: 100%;
+    min-width: 320px;
+    background: url("../../assets/bg_about.png") repeat-x center center;
+    background-size: cover;
+}
+
+.About__header.page__header {
+    margin-bottom: 150px;
+}
+
+.About__title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.About__text {
+    font-size: 14px;
+}

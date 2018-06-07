@@ -7,6 +7,8 @@ import {Parallax} from "react-scroll-parallax";
 import Trailer from "./trailer/Trailer";
 import Subscribe from "./subscribe/Subscribe";
 import ScrollArea from './scrollAreaLib/ScrollArea';
+import About from "./about/About";
+import BePart from "./bePart/BePart";
 
 class MainPage extends Component {
 
@@ -50,13 +52,19 @@ class MainPage extends Component {
                     horizontal={true}
                     vertical={false}
                     swapWheelAxes={true}
-                    forceWidth={2 * this.state.width}
+                    forceWidth={4 * this.state.width}
                     smoothScrolling
                 >
                     <Trailer
                         width={this.state.width}
                     />
                     <Subscribe
+                        width={this.state.width}
+                    />
+                    <About
+                        width={this.state.width}
+                    />
+                    <BePart
                         width={this.state.width}
                     />
                 </ScrollArea>
@@ -84,31 +92,6 @@ export default MainPage;
 //             </Parallax>
 //         </div>
 //
-//         <div className='MainPage__submitForm'>
-//             {/*MailChimp signUp form*/}
-//             <div id='mc_embed_signup' className="MainPage__subscribe">
-//                 <form method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-//                       action="https://ministryofbroadcast.us18.list-manage.com/subscribe/post?u=3a04c6ba139b2a873a72515e4&amp;id=4ea83437ad"
-//                       className="validate" target="_blank" noValidate>
-//                     <div id="mc_embed_signup_scroll">
-//                         <label htmlFor="mce-EMAIL">Sign up for news and updates</label>
-//                         <input type="email" value={this.state.subscriptionText} name="EMAIL" className="email" id="mce-EMAIL"
-//                                placeholder="email address" required
-//                                onChange={(event) => this.setState({subscriptionText: event.target.value})}
-//                         />
-//                         {/*real people should not fill this in and expect good things - do not remove this or risk form bot signups*/}
-//                         <div className='MainPage__subscribe__hidden' aria-hidden="true">
-//                             <input type="text" name="b_3a04c6ba139b2a873a72515e4_4ea83437ad" tabIndex="-1"
-//                                    value=""/>
-//                         </div>
-//                         <div className="clear">
-//                             <input type="submit" value="Subscribe" name="subscribe"
-//                                    id="mc-embedded-subscribe" className="button"/>
-//                         </div>
-//                     </div>
-//                 </form>
-//             </div>
-//             {/*End mc_embed_signup*/}
 //         </div>
 //     </div>
 // )

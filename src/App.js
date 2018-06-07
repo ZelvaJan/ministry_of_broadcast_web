@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './App.css';
 import MainPage from "./components/MainPage";
 import {ParallaxProvider} from 'react-scroll-parallax';
 

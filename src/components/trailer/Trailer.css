@@ -7,16 +7,17 @@
     position: relative;
 }
 
-.Trailer__header {
-    margin-top: 50px;
-    margin-bottom: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.Trailer__video__wrapper {
+    width: 760px;
+    height: 478px;
+    margin: 0 auto;
+    background: url("../../assets/video_frame.png") no-repeat center center;
+    background-size: 100% 100%;
 }
 
-.Trailer__header span {
-    margin: 0 20px 20px;
+.Trailer__video {
+    margin-top: 60px;
 }
 
 .Trailer__scrollText {

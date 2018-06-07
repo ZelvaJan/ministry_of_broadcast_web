@@ -22,7 +22,7 @@ class Trailer extends Component {
         height: '360',
         width: '640',
         playerVars: { // https://developers.google.com/youtube/player_parameters
-            autoplay: 1
+            autoplay: 0
         }
     }
 
@@ -31,18 +31,19 @@ class Trailer extends Component {
 
         return (
             <div className='Trailer__root' style={{minWidth: this.props.width}}>
-                <div className='Trailer__header'>
-                    <span>THE GAME</span>
+                <div className='page__header'>
+                    <span className='page__header__selected'>THE GAME</span>
                     <span>SUBSCRIBE</span>
-                    <img src={logoV2} className='Trailer__logo'/>
+                    <img src={logoV2} className='page__header_logo'/>
                     <span>ABOUT</span>
                     <span>BE A PART</span>
                 </div>
 
-                <div className='Trailer__video'>
+                <div className='Trailer__video__wrapper'>
                     <YouTube
                         videoId="a64MUU0RgoQ"
                         opts={this.videoOpts}
+                        className='Trailer__video'
                         // https://github.com/troybetz/react-youtube
                     />
                 </div>

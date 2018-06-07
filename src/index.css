@@ -1,7 +1,28 @@
 body, html, #root, .App {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Saira', sans-serif;
+}
+
+input {
+    font-family: 'Saira', sans-serif;
+}
+
+.page__header {
+    margin-top: 40px;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page__header span:hover, .page__header__selected {
+    border-bottom: #bb3628 2px solid;
+    cursor: pointer;
+}
+
+.page__header span {
+    margin: 0 20px 20px;
 }
