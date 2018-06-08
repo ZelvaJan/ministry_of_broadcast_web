@@ -9,6 +9,7 @@ import Subscribe from "./subscribe/Subscribe";
 import ScrollArea from './scrollAreaLib/ScrollArea';
 import About from "./about/About";
 import BePart from "./bePart/BePart";
+import PropTypes from "prop-types";
 
 class MainPage extends Component {
 
@@ -29,6 +30,7 @@ class MainPage extends Component {
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
+        if (this.scrollTimeout) clearTimeout(this.scrollTimeout);
     }
 
     updateWindowDimensions() {
@@ -39,6 +41,45 @@ class MainPage extends Component {
         });
     }
 
+    handleScrollToPosition = (position) => {
+        if (this.scrollArea) {
+            console.warn("Manual scroll: " + position);
+            this.scrollArea.scrollXTo(position);
+        } else {
+            console.error("Missing scrollArea");
+        }
+    };
+
+    handleOnScrollEvent = (value) => {
+        if (value && value.leftPosition) {
+            console.log("Scroll: ", value);
+            const {width} = this.state;
+            if (value.leftPosition % width !== 0) {
+                const page = Math.round(value.leftPosition / width);
+                const sideVal = value.leftPosition - page * width;
+
+                //if (this.scrollTimeout) clearTimeout(this.scrollTimeout);
+                if (!this.scrollTimeout) {
+                    this.scrollTimeout = setTimeout(() => {
+                        let resultPos = page * width;
+                        if (sideVal !== 0) {
+                            if (sideVal > 0) {
+                                resultPos = (page + 1) * width;
+                            } else {
+                                resultPos = (page - 1) * width;
+                            }
+                        }
+
+                        console.warn("Side val: " + sideVal + ". Result pos: " + resultPos);
+                        this.handleScrollToPosition(resultPos);
+                        this.scrollTimeout = null;
+                    }, 120);
+                }
+            }
+        } else {
+            console.log("Value didn't exists");
+        }
+    };
 
     render() {
         return (
@@ -46,6 +87,9 @@ class MainPage extends Component {
                 {/*<div className='MainPage__sky'/>*/}
                 {/*<div className='MainPage__background__wall'/>*/}
                 <ScrollArea
+                    ref={scrollArea => {
+                        this.scrollArea = scrollArea;
+                    }}
                     speed={0.8}
                     className="MainPage__scrollArea"
                     contentClassName="MainPage__scrollWrapper"
@@ -54,18 +98,23 @@ class MainPage extends Component {
                     swapWheelAxes={true}
                     forceWidth={4 * this.state.width}
                     smoothScrolling
+                    onScroll={this.handleOnScrollEvent}
                 >
                     <Trailer
                         width={this.state.width}
+                        handleScrollToPosition={this.handleScrollToPosition}
                     />
                     <Subscribe
                         width={this.state.width}
+                        handleScrollToPosition={this.handleScrollToPosition}
                     />
                     <About
                         width={this.state.width}
+                        handleScrollToPosition={this.handleScrollToPosition}
                     />
                     <BePart
                         width={this.state.width}
+                        handleScrollToPosition={this.handleScrollToPosition}
                     />
                 </ScrollArea>
             </div>

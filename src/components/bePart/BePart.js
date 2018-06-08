@@ -7,6 +7,8 @@ class BePart extends Component {
 
     static propTypes = {
         width: PropTypes.number.isRequired,
+
+        handleScrollToPosition: PropTypes.func.isRequired
     };
 
     constructor() {
@@ -14,14 +16,16 @@ class BePart extends Component {
     }
 
     render() {
+        const {handleScrollToPosition, width} = this.props;
+
         return (
             <div className='BePart__root' style={{minWidth: this.props.width}}>
                 <div className='page__header'>
-                    <span>THE GAME</span>
-                    <span>SUBSCRIBE</span>
+                    <span onClick={() => handleScrollToPosition(0)}>THE GAME</span>
+                    <span onClick={() => handleScrollToPosition(width)}>SUBSCRIBE</span>
                     <img src={logoV2} className='page__header_logo'/>
-                    <span>ABOUT</span>
-                    <span className='page__header__selected'>BE A PART</span>
+                    <span onClick={() => handleScrollToPosition(2 * width)}>ABOUT</span>
+                    <span onClick={() => handleScrollToPosition(3 * width)} className='page__header__selected'>BE A PART</span>
                 </div>
 
             </div>
