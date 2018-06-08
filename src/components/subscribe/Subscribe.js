@@ -28,7 +28,7 @@ class Subscribe extends Component {
                 <div className='page__header Subscribe__header'>
                     <span onClick={() => handleScrollToPosition(0)}>THE GAME</span>
                     <span onClick={() => handleScrollToPosition(width)} className='page__header__selected'>SUBSCRIBE</span>
-                    <img src={logoV2} className='page__header_logo'/>
+                    <img src={logoV2} className='page__header_logo' alt='Company logo'/>
                     <span onClick={() => handleScrollToPosition(2 * width)}>ABOUT</span>
                     <span onClick={() => handleScrollToPosition(3 * width)}>BE A PART</span>
                 </div>
@@ -56,7 +56,7 @@ class Subscribe extends Component {
                             </div>
                         </div>
                     </form>
-                    <img className='Subscribe__warnSign' src={warnSign}/>
+                    <img className='Subscribe__warnSign' src={warnSign} alt=''/>
                 </div>
             </div>
         )

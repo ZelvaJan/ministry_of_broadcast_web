@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './Trailer.css';
 import logoV2 from '../../assets/logo_v2.png';
 import YouTube from 'react-youtube';
-import MainPage from "../MainPage";
 
 class Trailer extends Component {
 
@@ -37,7 +36,7 @@ class Trailer extends Component {
                 <div className='page__header'>
                     <span onClick={() => handleScrollToPosition(0)} className='page__header__selected'>THE GAME</span>
                     <span onClick={() => handleScrollToPosition(width)}>SUBSCRIBE</span>
-                    <img src={logoV2} className='page__header_logo'/>
+                    <img src={logoV2} className='page__header_logo' alt='Company logo'/>
                     <span onClick={() => handleScrollToPosition(2 * width)}>ABOUT</span>
                     <span onClick={() => handleScrollToPosition(3 * width)}>BE A PART</span>
                 </div>

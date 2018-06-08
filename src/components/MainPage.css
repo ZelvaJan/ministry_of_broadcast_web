@@ -19,35 +19,6 @@
 }
 
 
-/*
-.MainPage__scrollWrapper {
-    height: 100%;
-    display: flex;
-    overflow-x: auto;
-    width: 4000px;
-}
-*/
-
-
-/*
-.MainPage__sky {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 700px;
-    width: 100%;
-    background-color: rgb(222, 226, 203);
-}
-
-.MainPage__background__wall {
-    position: absolute;
-    top: 340px;
-    left: 0;
-    height: 360px;
-    width: 100%;
-    background: url(../assets/bg_wall_part.png) repeat-x;
-}
-*/
 
 .MainPage__background__parallax {
     position: absolute;

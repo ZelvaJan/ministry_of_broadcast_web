@@ -1,7 +1,56 @@
 .BePart__root {
     display: inline-block;
+    position: relative;
     height: 100%;
     min-width: 320px;
     background: url("../../assets/bg_be_part.png") repeat-x center center;
     background-size: cover;
+}
+
+.BePart__title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.BePart__text {
+    font-size: 14px;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.BePart__link__wrap {
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 20px;
+    border-bottom: #bb3628 2px solid;
+}
+
+.BePart__link__wrap a {
+    text-decoration: none;
+    color: black;
+    transition: all 0.23s ease-in-out 0s;
+}
+
+.BePart__link__wrap a:hover {
+    color: #bb3628;
+}
+
+.BePart__footer {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 110px;
+}
+
+.BePart__social__title {
+    padding: 4px;
+    margin: 0;
+    font-size: 16px;
+}
+
+.BePart__social__icons a{
+    margin: 10px;
+    text-decoration: none;
 }

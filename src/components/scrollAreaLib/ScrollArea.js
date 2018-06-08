@@ -51,8 +51,12 @@ export default class ScrollArea extends React.Component {
             },
             scrollXTo: (position) => {
                 this.scrollXTo(position);
+            },
+            disableScroll: (disabled) => {
+                this.disableScroll(disabled)
             }
         };
+        this.scrollDisabled = false;
 
         this.evntsPreviousValues = {
             clientX: 0,
@@ -244,7 +248,7 @@ export default class ScrollArea extends React.Component {
         this.scrollYTo(position);
     }
 
-    handleWheel(e) {
+    handleWheel(e) {    // Handle wheel and also touchpad
         let deltaY = e.deltaY;
         let deltaX = e.deltaX;
 
@@ -265,6 +269,12 @@ export default class ScrollArea extends React.Component {
 
         deltaY = deltaY * this.props.speed;
         deltaX = deltaX * this.props.speed;
+
+        // Skip small movements and repetitive events
+        if (this.scrollDisabled || Math.abs(deltaX) < 30) {
+            console.log("Skip scroll event");
+            return;
+        }
 
         let newState = this.composeNewState(-deltaX, -deltaY);
 
@@ -304,6 +314,8 @@ export default class ScrollArea extends React.Component {
                     break;
                 case 40: // down
                     deltaY = -lineHeight;
+                    break;
+                default:
                     break;
             }
 
@@ -419,6 +431,10 @@ export default class ScrollArea extends React.Component {
             let position = this.normalizeLeftPosition(leftPosition, this.computeSizes());
             this.setStateFromEvent({leftPosition: position}, eventTypes.api);
         }
+    }
+
+    disableScroll(disabled) {
+        this.scrollDisabled = disabled;
     }
 
     canScrollY(state = this.state) {

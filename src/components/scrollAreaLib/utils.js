@@ -1,13 +1,14 @@
 import React from 'react';
+import * as ReactDOM from "react-dom";
 
 const react13 = isReact13(React);
-var didWarnAboutChild = false;
+let didWarnAboutChild = false;
 
 export function findDOMNode(component){
     if(!react13){
         return component;
     }else{
-        return React.findDOMNode(component);
+        return ReactDOM.findDOMNode(component);
     }
 }
 

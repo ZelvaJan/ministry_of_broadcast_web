@@ -1,15 +1,10 @@
 import React, {Component} from 'react';
 import './MainPage.css';
-import background_img from '../assets/background.png';
-import background_img2 from '../assets/background2.png';
-import logo from '../assets/logo.png';
-import {Parallax} from "react-scroll-parallax";
 import Trailer from "./trailer/Trailer";
 import Subscribe from "./subscribe/Subscribe";
 import ScrollArea from './scrollAreaLib/ScrollArea';
 import About from "./about/About";
 import BePart from "./bePart/BePart";
-import PropTypes from "prop-types";
 
 class MainPage extends Component {
 
@@ -31,6 +26,7 @@ class MainPage extends Component {
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
         if (this.scrollTimeout) clearTimeout(this.scrollTimeout);
+        if (this.cooldownTimeout) clearTimeout(this.cooldownTimeout);
     }
 
     updateWindowDimensions() {
@@ -43,7 +39,7 @@ class MainPage extends Component {
 
     handleScrollToPosition = (position) => {
         if (this.scrollArea) {
-            console.warn("Manual scroll: " + position);
+            //console.warn("Manual scroll: " + position);
             this.scrollArea.scrollXTo(position);
         } else {
             console.error("Missing scrollArea");
@@ -51,33 +47,42 @@ class MainPage extends Component {
     };
 
     handleOnScrollEvent = (value) => {
-        if (value && value.leftPosition) {
-            console.log("Scroll: ", value);
-            const {width} = this.state;
-            if (value.leftPosition % width !== 0) {
-                const page = Math.round(value.leftPosition / width);
-                const sideVal = value.leftPosition - page * width;
+        if (this.scrollArea) {
+            if (value && value.leftPosition) {
+                //console.log("Scroll: ", value);
+                const {width} = this.state;
+                if (value.leftPosition % width !== 0) {
+                    const page = Math.round(value.leftPosition / width);
+                    const sideVal = value.leftPosition - page * width;
 
-                //if (this.scrollTimeout) clearTimeout(this.scrollTimeout);
-                if (!this.scrollTimeout) {
-                    this.scrollTimeout = setTimeout(() => {
-                        let resultPos = page * width;
-                        if (sideVal !== 0) {
-                            if (sideVal > 0) {
-                                resultPos = (page + 1) * width;
-                            } else {
-                                resultPos = (page - 1) * width;
+                    //if (this.scrollTimeout) clearTimeout(this.scrollTimeout);
+                    if (!this.cooldownTimeout && !this.scrollTimeout) {
+                        this.scrollArea.disableScroll(true);
+                        this.scrollTimeout = setTimeout(() => {
+                            this.cooldownTimeout = setTimeout(() => {
+                                this.cooldownTimeout = null;
+                                this.scrollArea.disableScroll(false);
+                            }, 250);
+                            let resultPos = page * width;
+                            if (sideVal !== 0) {
+                                if (sideVal > 0) {
+                                    resultPos = (page + 1) * width;
+                                } else {
+                                    resultPos = (page - 1) * width;
+                                }
                             }
-                        }
 
-                        console.warn("Side val: " + sideVal + ". Result pos: " + resultPos);
-                        this.handleScrollToPosition(resultPos);
-                        this.scrollTimeout = null;
-                    }, 120);
+                            //console.warn("Side val: " + sideVal + ". Result pos: " + resultPos);
+                            this.handleScrollToPosition(resultPos);
+                            this.scrollTimeout = null;
+                        }, 120);
+                    }
                 }
+            } else {
+                console.log("Value didn't exists");
             }
         } else {
-            console.log("Value didn't exists");
+            console.error("Missing scrollArea");
         }
     };
 
@@ -86,6 +91,8 @@ class MainPage extends Component {
             <div className='MainPage'>
                 {/*<div className='MainPage__sky'/>*/}
                 {/*<div className='MainPage__background__wall'/>*/}
+                <h1 className='hidden'>Ministry of broadcast - The Wall Show</h1>
+                <h2 className='hidden'>brought by Twin Petes s.r.o.</h2>
                 <ScrollArea
                     ref={scrollArea => {
                         this.scrollArea = scrollArea;
