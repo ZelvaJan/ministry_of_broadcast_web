@@ -28,7 +28,7 @@ class BePart extends Component {
                           className='page__header__selected'>BE A PART</span>
                 </div>
 
-                <div>
+                <div className='BePart__content'>
                     <p className='BePart__title'>Be part of us...</p>
                     <p className='BePart__text'>If you didn't find something on this site or you are interested in
                         anything else, feel free to contact us:</p>

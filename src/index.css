@@ -17,10 +17,11 @@ input {
 
 .page__header {
     margin-top: 40px;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .page__header span:hover, .page__header__selected {
@@ -30,4 +31,40 @@ input {
 
 .page__header span {
     margin: 0 20px 20px;
+}
+
+.page__header_logo {
+    width: 70%;
+    max-width: 380px;
+}
+
+@media (max-width: 800px) {
+    .page__header {
+        display: block;
+        margin-top: 20px;
+    }
+
+    .page__header span:nth-child(1) {
+        position: absolute;
+        left: 0;
+        top: 85px;
+    }
+
+    .page__header span:nth-child(2) {
+        position: absolute;
+        left: 25px;
+        top: 115px;
+    }
+
+    .page__header span:nth-child(4) {
+        position: absolute;
+        right: 0;
+        top: 85px;
+    }
+
+    .page__header span:nth-child(5) {
+        position: absolute;
+        right: 25px;
+        top: 115px;
+    }
 }

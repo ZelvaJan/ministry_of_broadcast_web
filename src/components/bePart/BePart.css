@@ -4,7 +4,13 @@
     height: 100%;
     min-width: 320px;
     background: url("../../assets/bg_be_part.png") repeat-x center center;
-    background-size: cover;
+    background-size: auto 100%;
+}
+
+.BePart__content {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .BePart__title {
@@ -14,7 +20,7 @@
 
 .BePart__text {
     font-size: 14px;
-    width: 500px;
+    max-width: 500px;
     margin: 0 auto;
 }
 
@@ -41,7 +47,7 @@
     margin-right: auto;
     left: 0;
     right: 0;
-    bottom: 110px;
+    bottom: 146px;
 }
 
 .BePart__social__title {
@@ -53,4 +59,14 @@
 .BePart__social__icons a{
     margin: 10px;
     text-decoration: none;
+}
+
+@media (max-width: 400px) {
+    .BePart__footer {
+        bottom: 56px;
+    }
+
+    .BePart__link__wrap {
+        font-size: 18px;
+    }
 }

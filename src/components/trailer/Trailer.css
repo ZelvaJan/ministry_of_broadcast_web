@@ -3,25 +3,39 @@
     height: 100%;
     min-width: 320px;
     background: url("../../assets/bg_trailer.png") repeat-x center center;
-    background-size: cover;
+    background-size: auto 100%;
     position: relative;
 }
 
 
 .Trailer__video__wrapper {
-    width: 760px;
-    height: 478px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    max-width: 760px;
+    max-height: 478px;
     margin: 0 auto;
+    padding: 70px;
+    display: inline-block;
     background: url("../../assets/video_frame.png") no-repeat center center;
     background-size: 100% 100%;
-}
-
-.Trailer__video {
-    margin-top: 60px;
 }
 
 .Trailer__scrollText {
     position: absolute;
     bottom: 40px;
     right: 30px;
+}
+
+@media (max-width: 800px) {
+    .Trailer__video__wrapper {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 400px) {
+    .Trailer__video__wrapper {
+        padding: 10px;
+    }
 }

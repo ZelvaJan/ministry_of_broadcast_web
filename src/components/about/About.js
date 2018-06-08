@@ -28,7 +28,7 @@ class About extends Component {
                 <div>
                     <p className='About__title'>WHO ARE WE?</p>
                     <p className='About__text'>We are small game dev studio from Czech Republic...</p>
-                    <img src={aboutTeam} alt='Our team'/>
+                    <img className='About__gif' src={aboutTeam} alt='Our team'/>
                 </div>
 
                 <div className='About__footer'>

@@ -270,8 +270,14 @@ export default class ScrollArea extends React.Component {
         deltaY = deltaY * this.props.speed;
         deltaX = deltaX * this.props.speed;
 
+        // Horizontal and vertical scrolling - both update x axis
+        // noinspection JSSuspiciousNameCombination
+        if (Math.abs(deltaY) > Math.abs(deltaX)) {
+            // noinspection JSSuspiciousNameCombination
+            deltaX = deltaY;
+        }
         // Skip small movements and repetitive events
-        if (this.scrollDisabled || Math.abs(deltaX) < 30) {
+        if (this.scrollDisabled || Math.abs(deltaX) < 35) {
             console.log("Skip scroll event");
             return;
         }

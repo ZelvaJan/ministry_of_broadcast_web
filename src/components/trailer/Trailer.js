@@ -20,16 +20,16 @@ class Trailer extends Component {
         }
     }
 
-    videoOpts = {
-        height: '360',
-        width: '640',
-        playerVars: { // https://developers.google.com/youtube/player_parameters
-            autoplay: 0
-        }
-    }
-
     render() {
         const {handleScrollToPosition, width} = this.props;
+        const videoWidth = width > 640 ? 640 : width - 20;
+        const videoOpts = {
+            height: videoWidth / 16 * 9,
+            width: videoWidth,
+            playerVars: { // https://developers.google.com/youtube/player_parameters
+                autoplay: 0
+            }
+        }
 
         return (
             <div className='Trailer__root' style={{minWidth: this.props.width}}>
@@ -44,7 +44,7 @@ class Trailer extends Component {
                 <div className='Trailer__video__wrapper'>
                     <YouTube
                         videoId="a64MUU0RgoQ"
-                        opts={this.videoOpts}
+                        opts={videoOpts}
                         className='Trailer__video'
                         // https://github.com/troybetz/react-youtube
                     />

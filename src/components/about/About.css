@@ -3,7 +3,7 @@
     height: 100%;
     min-width: 320px;
     background: url("../../assets/bg_about.png") repeat-x center center;
-    background-size: cover;
+    background-size: auto 100%;
     position: relative;
 }
 
@@ -16,11 +16,17 @@
     font-size: 14px;
 }
 
+.About__gif {
+    width: 90%;
+    margin: 0 5%;
+    max-width: 800px;
+}
+
 .About__footer {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 100px;
+    bottom: 136px;
     display: flex;
     justify-content: center;
     text-align: left;
@@ -53,4 +59,15 @@
 
 .About__footer__hidden {
     color: #a3a889;
+}
+
+
+@media (max-width: 400px) {
+    .About__footer {
+        bottom: 46px;
+    }
+
+    .About__footer__block {
+        margin: 0 15px;
+    }
 }
