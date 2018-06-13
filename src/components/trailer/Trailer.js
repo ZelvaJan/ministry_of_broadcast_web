@@ -29,8 +29,9 @@ class Trailer extends Component {
             playerVars: { // https://developers.google.com/youtube/player_parameters
                 autoplay: 0
             }
-        }
+        };
 
+        // TODO Video on safari doesn't load. Put some placeholder and link instead.
         return (
             <div className='Trailer__root' style={{minWidth: this.props.width}}>
                 <div className='page__header'>

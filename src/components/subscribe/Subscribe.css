@@ -81,7 +81,7 @@
 }
 
 /* positions button horizontally in line with input */
-#mc_embed_signup .button {
+#mc-embedded-subscribe.button {
     font-size: 20px;
     border: none;
     letter-spacing: .03em;
@@ -96,7 +96,7 @@
     transition: all 0.23s ease-in-out 0s;
 }
 
-#mc_embed_signup .button:hover {
+#mc-embedded-subscribe.button:hover {
     background-color: #3C5F86;
     cursor: pointer;
 }
