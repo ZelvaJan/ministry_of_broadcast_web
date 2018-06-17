@@ -94,6 +94,8 @@
     display: inline-block;
     margin: 0;
     transition: all 0.23s ease-in-out 0s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 #mc-embedded-subscribe.button:hover {
