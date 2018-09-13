@@ -1,10 +1,16 @@
 .About__root {
-    display: inline-block;
-    height: 100%;
-    min-width: 320px;
-    background: url("../../assets/bg_about.png") repeat-x center center;
-    background-size: auto 100%;
     position: relative;
+    padding-top: 200px;
+    box-sizing: border-box;
+    z-index: 10;
+    height: 100%;
+}
+
+.About__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .About__title {
@@ -14,60 +20,51 @@
 
 .About__text {
     font-size: 14px;
-}
-
-.About__gif {
-    width: 90%;
-    margin: 0 5%;
-    max-width: 800px;
-}
-
-.About__footer {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 110px;
-    display: flex;
-    justify-content: center;
-    text-align: left;
-}
-
-.About__footer__block {
-    margin: 0 40px;
-}
-
-.About__footer__block p {
+    max-width: 600px;
     margin: 0;
 }
 
-.About__awards__title {
+.About__link__wrap {
+    display: inline-block;
+    margin: 20px;
     font-size: 20px;
+    border-bottom: #bb3628 2px solid;
+}
+
+.About__link__wrap a {
+    text-decoration: none;
+    color: black;
+    transition: all 0.23s ease-in-out 0s;
+}
+
+.About__link__wrap a:hover {
     color: #bb3628;
-    font-weight: bold;
 }
 
-.About__delimiter {
-    width: 50px;
-    height: 2px;
-    background-color: #5a978f;
+.About__room {
+    width: 80%;
+    max-width: 800px;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 100px;
 }
 
-.About__nomination__title {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.About__footer__hidden {
-    color: #a3a889;
-}
-
-
-@media (max-width: 400px) {
-    .About__footer {
-        bottom: 46px;
+@media (max-width: 500px) {
+    .About__title {
+        font-size: 14px;
     }
 
-    .About__footer__block {
-        margin: 0 15px;
+    .About__text {
+        font-size: 12px;
+    }
+
+    .About__link__wrap {
+        font-size: 16px;
+    }
+
+    .About__room {
+        margin-bottom: 70px;
     }
 }
+
+

@@ -1,10 +1,20 @@
 .MainPage {
     text-align: center;
-    background-color: rgb(246, 249, 232);
+    background-color: #dee2cb;
+    /*rgb(246, 249, 232);*/
     height: 100%;
     width: 100%;
     display: flex;
     overflow-x: auto;
+    flex-direction: column;
+}
+
+.wall_background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url("../assets/bg_wall.png") repeat-x left bottom;
+    transform: translateY(-250px);
 }
 
 .MainPage__scrollArea {
@@ -15,14 +25,74 @@
 .MainPage__scrollWrapper {
     height: 100%;
     display: flex;
-
 }
 
-
-
-.MainPage__background__parallax {
+.page__header {
+    height: 170px;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    top: 350px;
-    left: 50%;
-    transform: translate(-50%, 0);
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.page__header span:hover, .page__header__selected {
+    border-bottom: #bb3628 2px solid;
+    cursor: pointer;
+}
+
+.page__header span {
+    margin: 0 20px 20px;
+}
+
+.page__header_logo {
+    width: 70%;
+    max-width: 380px;
+}
+
+@media (max-width: 800px) {
+    .page__header {
+        display: block;
+        margin-top: 20px;
+    }
+
+    .page__header span:nth-child(1) {
+        position: absolute;
+        left: 0;
+        top: 85px;
+    }
+
+    .page__header span:nth-child(2) {
+        position: absolute;
+        left: 25px;
+        top: 115px;
+    }
+
+    .page__header span:nth-child(4) {
+        position: absolute;
+        right: 0;
+        top: 85px;
+    }
+
+    .page__header span:nth-child(5) {
+        position: absolute;
+        right: 25px;
+        top: 115px;
+    }
+
+    .wall_background {
+        background-size: 75%;
+        transform: translateY(-170px);
+    }
+}
+
+@media (max-width: 400px) {
+    .wall_background {
+        background-size: 75%;
+        transform: translateY(-100px);
+    }
 }

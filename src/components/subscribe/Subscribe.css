@@ -1,20 +1,56 @@
 .Subscribe__root {
-    display: inline-block;
+    position: relative;
+    padding-top: 200px;
+    box-sizing: border-box;
+    z-index: 10;
     height: 100%;
-    min-width: 320px;
-    background: url("../../assets/bg_subscribe.png") repeat-x center center;
+
     background-size: auto 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.Subscribe__header.page__header {
-    margin-bottom: 100px;
+.Subscribe__content {
+    text-align: left;
+    width: 90%;
+    max-width: 700px;
 }
+
+.Subscribe__title {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+
+
+.Subscribe__footer {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 60px;
+}
+
+.Subscribe__social__title {
+    padding: 4px;
+    margin: 0;
+    font-size: 16px;
+}
+
+.Subscribe__social__icons a{
+    margin: 10px;
+    text-decoration: none;
+}
+
 
 /***************************************************************/
 /******************** MailChimp subscribe ***********************/
 .Subscribe__wrapper {
     clear: left;
-    width: 90%;
     max-width: 700px;
     min-width: 320px;
     position: relative;

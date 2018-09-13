@@ -144,7 +144,7 @@ export default class ScrollArea extends React.Component {
             marginTop: -this.state.topPosition,
             marginLeft: -this.state.leftPosition
         };
-        let springifiedContentStyle = withMotion ? modifyObjValues(contentStyle, x => spring(x)) : contentStyle;
+        let springifiedContentStyle = withMotion ? modifyObjValues(contentStyle, x => spring(x, {stiffness: 170, damping: 26, precision: 1})) : contentStyle;
 
         return (
             <Motion style={springifiedContentStyle}>
@@ -404,9 +404,15 @@ export default class ScrollArea extends React.Component {
 
     setSizesToState() {
         let sizes = this.computeSizes();
+        if (Math.abs(sizes.realHeight - this.state.realHeight) >= 2 || Math.abs(sizes.realWidth - this.state.realWidth) >= 2) {
+            this.setStateFromEvent(this.getModifiedPositionsIfNeeded(sizes));
+        }
+
+        /*
         if (sizes.realHeight !== this.state.realHeight || sizes.realWidth !== this.state.realWidth) {
             this.setStateFromEvent(this.getModifiedPositionsIfNeeded(sizes));
         }
+        */
     }
 
     scrollTop() {

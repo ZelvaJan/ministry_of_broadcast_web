@@ -1,0 +1,58 @@
+.Toy__root {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+}
+
+
+.Toy__figure {
+    position: absolute;
+    width: 100%;
+    max-width: 1020px;
+    height: 100%;
+    background: url("../../assets/figure.png") no-repeat center bottom transparent;
+    background-size: cover;
+}
+
+
+.Toy__button__wrapper {
+    width: 300px;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.Toy__button {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    color: #f6f9e8;
+    background-color: #4d7ca7;
+    box-sizing: border-box;
+    height: 60px;
+    line-height: 60px;
+    margin: 0;
+    vertical-align: top;
+    outline: none;
+    text-decoration: none;
+}
+
+.Toy__warnSign {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    width: 100%;
+    height: auto;
+}
+
+
+.Toy__button:hover {
+    background-color: #4a6893;
+    cursor: pointer;
+}
