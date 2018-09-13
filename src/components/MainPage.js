@@ -91,7 +91,7 @@ class MainPage extends Component {
                 if (value.leftPosition % width !== 0) {
                     const page = Math.round(value.leftPosition / width);
                     let sideVal = value.leftPosition - page * width;
-                    if (Math.abs(sideVal) < 2) {
+                    if (Math.abs(sideVal) < 10) {
                         sideVal = 0;
                     }
 
@@ -102,7 +102,7 @@ class MainPage extends Component {
                             this.cooldownTimeout = setTimeout(() => {
                                 this.cooldownTimeout = null;
                                 this.scrollArea.disableScroll(false);
-                            }, 500);
+                            }, 350);
                             let resultPos = page * width;
                             if (sideVal !== 0) {
                                 if (sideVal > 0) {
