@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import './Trailer.css';
 import YouTube from 'react-youtube';
+import tower from '../../assets/tower.png';
 
 class Trailer extends Component {
 
@@ -74,6 +75,8 @@ class Trailer extends Component {
                             </div>
                         </div>
                     </div>
+
+                    <img src={tower} className='Trailer__bg__tower' alt=''/>
                 </div>
 
                 <div className='Trailer__scrollText'>Scroll to see more...</div>
