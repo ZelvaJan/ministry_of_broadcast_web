@@ -20,6 +20,12 @@
     bottom: 265px;
 }
 
+@media (max-width: 800px) {
+    .Toy__poster {
+        display: none;
+    }
+}
+
 @media (max-width: 1400px) {
     .Toy__tree__blurred {
         display: none;

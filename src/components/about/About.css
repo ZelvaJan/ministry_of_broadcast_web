@@ -51,6 +51,7 @@
 
 .About__link__wrap a:hover {
     color: #bb3628;
+    cursor: pointer;
 }
 
 .About__room {

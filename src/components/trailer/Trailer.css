@@ -16,6 +16,7 @@
     max-width: 600px;
     font-size: 14px;
     margin: 0 auto;
+    padding-bottom: 10px;
 }
 .Trailer__content {
     display: flex;
@@ -90,7 +91,7 @@
     }
 
     .Trailer__content {
-        padding-bottom: 50px;
+        padding-bottom: 52px;
     }
 }
 

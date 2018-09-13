@@ -41,6 +41,19 @@
     max-width: 700px;
 }
 
+@media (max-width: 800px) {
+    .Subscribe__content {
+        margin-top: 50px;
+    }
+    .Subscribe__bunker {
+        display: none;
+    }
+
+    .Subscribe__poster {
+        display: none;
+    }
+}
+
 .Subscribe__title {
     font-size: 16px;
     font-weight: bold;
@@ -56,7 +69,7 @@
     margin-right: auto;
     left: 0;
     right: 0;
-    bottom: 60px;
+    bottom: 55px;
 }
 
 .Subscribe__social__title {
