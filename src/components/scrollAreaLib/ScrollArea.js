@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './ScrollArea.css';
 import lineHeight from 'line-height';
-import { Motion, spring } from 'react-motion';
+import {Motion, spring} from 'react-motion';
 
 import {
     findDOMNode, warnAboutFunctionChild, warnAboutElementChild, positiveOrZero, modifyObjValues,
@@ -17,6 +17,8 @@ const eventTypes = {
     mousemove: 'mousemove',
     keyPress: 'keypress'
 };
+
+let resultMargin = null;
 
 export default class ScrollArea extends React.Component {
     constructor(props) {
@@ -144,32 +146,58 @@ export default class ScrollArea extends React.Component {
             marginTop: -this.state.topPosition,
             marginLeft: -this.state.leftPosition
         };
-        let springifiedContentStyle = withMotion ? modifyObjValues(contentStyle, x => spring(x, {stiffness: 170, damping: 26, precision: 1})) : contentStyle;
+        let springifiedContentStyle = withMotion ? modifyObjValues(contentStyle, x => spring(x, {
+            stiffness: 200,
+            damping: 26,
+            precision: 1
+        })) : contentStyle;
 
+        resultMargin = springifiedContentStyle.marginLeft;
         return (
             <Motion style={springifiedContentStyle}>
-                { style =>
-                    <div
-                        ref={x => this.wrapper = x}
-                        className={classes}
-                        style={this.props.style}
-                        onWheel={this.handleWheel.bind(this)}
-                    >
+                {style => {
+                    // TODO here you can update scroll speed
+                    /*
+                    if (style) {
+                        style.marginLeft = Math.round(style.marginLeft);
+                        if (!(prevValue === null)) {
+                            if (Math.abs(prevValue - style.marginLeft) < 1) {
+                                style.marginLeft = prevValue;
+                            } else {
+                                prevValue = style.marginLeft;
+                            }
+                        } else {
+                            prevValue = style.marginLeft;
+                        }
+                    }
+                    */
+                    if (Math.abs(resultMargin.val - style.marginLeft) < 2) {
+                        style.marginLeft = resultMargin.val;
+                    }
+                    return (
                         <div
-                            ref={x => this.content = x}
-                            style={{ ...this.props.contentStyle, ...style, minWidth: forceWidth}}
-                            className={contentClasses}
-                            onTouchStart={this.handleTouchStart.bind(this)}
-                            onTouchMove={this.handleTouchMove.bind(this)}
-                            onTouchEnd={this.handleTouchEnd.bind(this)}
-                            onKeyDown={this.handleKeyDown.bind(this)}
-                            tabIndex={this.props.focusableTabIndex}
+                            ref={x => this.wrapper = x}
+                            className={classes}
+                            style={this.props.style}
+                            onWheel={this.handleWheel.bind(this)}
                         >
-                            {children}
+                            <div
+                                ref={x => this.content = x}
+                                style={{...this.props.contentStyle, ...style, minWidth: forceWidth}}
+                                className={contentClasses}
+                                onTouchStart={this.handleTouchStart.bind(this)}
+                                onTouchMove={this.handleTouchMove.bind(this)}
+                                onTouchEnd={this.handleTouchEnd.bind(this)}
+                                onKeyDown={this.handleKeyDown.bind(this)}
+                                tabIndex={this.props.focusableTabIndex}
+                            >
+                                {children}
+                            </div>
+                            {scrollbarY}
+                            {scrollbarX}
                         </div>
-                        {scrollbarY}
-                        {scrollbarX}
-                    </div>
+                    )
+                }
                 }
             </Motion>
         );
@@ -478,7 +506,7 @@ export default class ScrollArea extends React.Component {
     }
 
     focusContent() {
-        if(this.content) {
+        if (this.content) {
             findDOMNode(this.content).focus();
         }
     }

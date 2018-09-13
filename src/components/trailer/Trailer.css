@@ -25,7 +25,7 @@
 }
 
 .Trailer__video__wrapper {
-    width: 815px;
+    width: 814px;
     height: 590px;
     margin: 0 auto;
     position: relative;
@@ -48,7 +48,7 @@
 .Trailer__video {
     position: absolute;
     top: 115px; /* Adjust top position */
-    left: 87px; /* Adjust left position */
+    left: 86px; /* Adjust left position */
     z-index: 5;
 }
 
@@ -60,13 +60,13 @@
 
 @media (max-width: 850px) {
     .Trailer__video__wrapper {
-        width: 572px;
+        width: 570px;
         height: 414px;
     }
 
     .Trailer__video {
         top: 81px; /* Adjust top position */
-        left: 61px; /* Adjust left position */
+        left: 60px; /* Adjust left position */
     }
 }
 
