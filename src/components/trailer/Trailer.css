@@ -22,7 +22,26 @@
     flex-direction: column;
     justify-content: flex-end;
     flex: 1 1 auto;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
+}
+
+.Trailer__tower__blurred {
+    position: absolute;
+    left: calc(50% - 1350px);
+    bottom: 0;
+    z-index: 1;
+}
+
+.Trailer__poster {
+    position: absolute;
+    left: calc(50% - 612px);
+    bottom: 265px;
+}
+
+.Trailer__board {
+    position: absolute;
+    left: calc(50% - 700px);
+    bottom: 100px;
 }
 
 .Trailer__video__wrapper {
@@ -69,6 +88,10 @@
         top: 81px; /* Adjust top position */
         left: 60px; /* Adjust left position */
     }
+
+    .Trailer__content {
+        padding-bottom: 50px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -90,6 +113,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    flex: 1;
+    max-height: 150px;
 }
 .Trailer__footer {
     margin-top: 10px;

@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import './Trailer.css';
 import YouTube from 'react-youtube';
+import tower_blurred from '../../assets/tower_blurred.png';
+import poster from '../../assets/poster.png';
+import board from '../../assets/board.png';
 import tower from '../../assets/tower.png';
 
 class Trailer extends Component {
@@ -42,6 +45,10 @@ class Trailer extends Component {
                 <p className='Trailer__title'>The Ministry of Broadcast game is developed by Twin Petes studio from Brno, under creative direction of the Fuchs+Dachs studio from Prague.</p>
 
                 <div className='Trailer__content'>
+                    <img src={tower_blurred} className='Trailer__tower__blurred' alt=''/>
+                    <img src={poster} className='Trailer__poster' alt=''/>
+                    <img src={board} className='Trailer__board' alt=''/>
+
                     <div className='Trailer__video__wrapper'>
                         <YouTube
                             videoId="a64MUU0RgoQ"

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './About.css';
 import PropTypes from "prop-types";
 import team from '../../assets/team.gif';
+import tree from '../../assets/tree.png';
 
 class About extends Component {
 
@@ -14,6 +15,7 @@ class About extends Component {
 
         return (
             <div className='About__root' style={{width: this.props.width}}>
+                <img src={tree} className='About__tree' alt=''/>
 
                 <div className='About__content'>
                     <p className='About__title'>WHO ARE WE?</p>

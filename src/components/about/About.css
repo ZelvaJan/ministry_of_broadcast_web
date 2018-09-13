@@ -6,6 +6,18 @@
     height: 100%;
 }
 
+.About__tree {
+    position: absolute;
+    left: calc(50% + 550px);
+    bottom: 100px;
+}
+
+@media (max-width: 1400px) {
+    .About__tree {
+        display: none;
+    }
+}
+
 .About__content {
     display: flex;
     flex-direction: column;

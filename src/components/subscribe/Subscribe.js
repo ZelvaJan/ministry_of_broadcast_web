@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import warnSign from '../../assets/warn_sign.png';
 import fbIcon from '../../assets/fb_icon.png';
 import twitterIcon from '../../assets/twitter_icon.png';
+import bunker from '../../assets/bunker.png';
+import tower_blurred from '../../assets/tower_blurred.png';
+import poster2 from '../../assets/poster2.png';
 
 class Subscribe extends Component {
 
@@ -24,6 +27,8 @@ class Subscribe extends Component {
         if (this.props.thankYou) {
             return (
                 <div className='Subscribe__root' style={{width: this.props.width}}>
+                    <img src={bunker} className='Subscribe__bunker' alt=''/>
+
                     <div className='Subscribe__content'>
                         <p className='Subscribe__title'>Thank you for subscribe</p>
                     </div>
@@ -32,6 +37,9 @@ class Subscribe extends Component {
         } else {
             return (
                 <div className='Subscribe__root' style={{width: this.props.width}}>
+                    <img src={bunker} className='Subscribe__bunker' alt=''/>
+                    <img src={tower_blurred} className='Subscribe__tower__blurred' alt=''/>
+                    <img src={poster2} className='Subscribe__poster' alt=''/>
 
                     <div className='Subscribe__content'>
                         <p className='Subscribe__title'>Your mail:</p>

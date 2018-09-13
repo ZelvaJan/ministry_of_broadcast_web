@@ -1,12 +1,30 @@
 .Toy__root {
     position: relative;
-    z-index: 10;
+    z-index: 2;
     height: 100%;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
 }
 
+.Toy__tree__blurred {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+.Toy__poster {
+    position: absolute;
+    left: calc(50% - 675px);
+    bottom: 265px;
+}
+
+@media (max-width: 1400px) {
+    .Toy__tree__blurred {
+        display: none;
+    }
+}
 
 .Toy__figure {
     position: absolute;
