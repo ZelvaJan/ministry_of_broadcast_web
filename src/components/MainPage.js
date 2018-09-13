@@ -53,12 +53,18 @@ class MainPage extends Component {
                 h = c.height = window.innerHeight;
             var f;
 
+            const width = this.state.width;
             Snowy();
 
             function Snowy() {
                 var snow, arr = [];
                 var num = 600, tsc = 1, sp = 1;
-                var sc = 1.3, t = 0, mv = 20, min = 1;
+                var sc = 1.3, t = 0, mv = 15, min = 1;
+                if (width < 800) {
+                    num = 200;
+                    mv = 10;
+                }
+
                 for (var i = 0; i < num; ++i) {
                     snow = new Flake();
                     snow.y = Math.random() * (h + 50);
