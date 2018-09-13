@@ -45,6 +45,71 @@ class MainPage extends Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.updateWindowDimensions);
+
+        var c = document.getElementById('canv');
+        if (c) {
+            var $ = c.getContext("2d");
+            var w = c.width = window.innerWidth,
+                h = c.height = window.innerHeight;
+            var f;
+
+            Snowy();
+
+            function Snowy() {
+                var snow, arr = [];
+                var num = 600, tsc = 1, sp = 1;
+                var sc = 1.3, t = 0, mv = 20, min = 1;
+                for (var i = 0; i < num; ++i) {
+                    snow = new Flake();
+                    snow.y = Math.random() * (h + 50);
+                    snow.x = Math.random() * w;
+                    snow.t = Math.random() * (Math.PI * 2);
+                    snow.sz = (100 / (10 + (Math.random() * 100))) * sc;
+                    snow.sp = (Math.pow(snow.sz * .8, 2) * .15) * sp;
+                    snow.sp = snow.sp < min ? min : snow.sp;
+                    arr.push(snow);
+                }
+                go();
+
+                function go() {
+                    window.requestAnimationFrame(go);
+                    $.clearRect(0, 0, w, h);
+                    // $.fillStyle = 'hsla(242, 95%, 3%, 1)';
+                    $.fillRect(0, 0, w, h);
+                    $.fill();
+                    for (var i = 0; i < arr.length; ++i) {
+                        f = arr[i];
+                        f.t += .05;
+                        f.t = f.t >= Math.PI * 2 ? 0 : f.t;
+                        f.y += f.sp;
+                        f.x += Math.sin(f.t * tsc) * (f.sz * .3);
+                        if (f.y > h + 50) f.y = -10 - Math.random() * mv;
+                        if (f.x > w + mv) f.x = -mv;
+                        if (f.x < -mv) f.x = w + mv;
+                        f.draw();
+                    }
+                }
+
+                function Flake() {
+                    this.draw = function () {
+                        this.g = $.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.sz);
+                        this.g.addColorStop(0, 'hsla(255,255%,255%,1)');
+                        this.g.addColorStop(1, 'hsla(255,255%,255%,0)');
+                        $.moveTo(this.x, this.y);
+                        $.fillStyle = this.g;
+                        $.beginPath();
+                        $.arc(this.x, this.y, this.sz, 0, Math.PI * 2, true);
+                        $.fill();
+                    }
+                }
+            }
+
+            /*________________________________________*/
+            window.addEventListener('resize', function () {
+                c.width = w = window.innerWidth;
+                c.height = h = window.innerHeight;
+            }, false);
+        }
     }
 
     componentWillUnmount() {
@@ -68,9 +133,9 @@ class MainPage extends Component {
             this.scrollArea.scrollXTo(position);
 
             const {width} = this.state;
-            if (position < (width/2)) {
+            if (position < (width / 2)) {
                 this.setState({menuSelected: menuItem.game})
-            } else if (position >= (width/2) && position < (1.5 * width)) {
+            } else if (position >= (width / 2) && position < (1.5 * width)) {
                 this.setState({menuSelected: menuItem.subscribe})
             } else if (position >= (1.5 * width) && position < (2.5 * width)) {
                 this.setState({menuSelected: menuItem.about})
@@ -137,6 +202,7 @@ class MainPage extends Component {
                 <h1 className='hidden'>Ministry of broadcast - The Wall Show</h1>
                 <h2 className='hidden'>brought by Twin Petes s.r.o.</h2>
 
+
                 <div className='page__header'>
                     <span className={`${menuSelected === menuItem.game ? 'page__header__selected' : ''}`}
                           onClick={() => this.handleScrollToPosition(0)}>THE GAME</span>
@@ -179,6 +245,8 @@ class MainPage extends Component {
                         width={this.state.width}
                     />
                 </ScrollArea>
+
+                <canvas id='canv'/>
             </div>
         )
     }
