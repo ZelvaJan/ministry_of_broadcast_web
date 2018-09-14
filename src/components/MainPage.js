@@ -185,7 +185,7 @@ class MainPage extends Component {
                             this.cooldownTimeout = setTimeout(() => {
                                 this.cooldownTimeout = null;
                                 this.scrollArea.disableScroll(false);
-                            }, 350);
+                            }, 450);
                             let resultPos = page * width;
                             if (sideVal !== 0) {
                                 if (sideVal > 0) {

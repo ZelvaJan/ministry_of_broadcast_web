@@ -42,12 +42,13 @@
     margin-top: 125px;
 }
 
-.Subscribe__thankyou {
+.Subscribe__content.Subscribe__thankyou {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-items: center;
     text-align: center;
+    margin-top: 80px;
 }
 
 .Subscribe__title {
