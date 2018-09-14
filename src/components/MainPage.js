@@ -59,10 +59,10 @@ class MainPage extends Component {
             function Snowy() {
                 var snow, arr = [];
                 var num = 600, tsc = 1, sp = 1;
-                var sc = 1.3, t = 0, mv = 15, min = 1, max = 2;
+                var sc = 1.3, t = 0, mv = 10, min = 0.5, max = 2;
                 if (width < 800) {
                     num = 200;
-                    mv = 10;
+                    mv = 5;
                 }
 
                 for (var i = 0; i < num; ++i) {
@@ -74,7 +74,7 @@ class MainPage extends Component {
                     snow.sp = (Math.pow(snow.sz * .8, 2) * .15) * sp;
                     snow.sp = snow.sp < min ? min : snow.sp;
                     snow.sp = snow.sp > max ? max : snow.sp;
-                    console.log(snow.sp);
+                    // console.log(snow.sp);
                     arr.push(snow);
                 }
                 go();
@@ -82,9 +82,9 @@ class MainPage extends Component {
                 function go() {
                     window.requestAnimationFrame(go);
                     $.clearRect(0, 0, w, h);
-                    // $.fillStyle = 'hsla(242, 95%, 3%, 1)';
-                    $.fillRect(0, 0, w, h);
-                    $.fill();
+                    //$.fillStyle = 'hsla(242, 95%, 3%, 1)';
+                    //$.fillRect(0, 0, w, h);
+                    //$.fill();
                     for (var i = 0; i < arr.length; ++i) {
                         f = arr[i];
                         f.t += .05;
@@ -101,16 +101,23 @@ class MainPage extends Component {
 
                 function Flake() {
                     this.draw = function () {
-                        this.g = $.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.sz);
-                        this.g.addColorStop(0, 'hsla(255,255%,255%,1)');
-                        this.g.addColorStop(1, 'hsla(255,255%,255%,0)');
+
+                        //this.g = $.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.sz);
+                        //this.g = $.createLinearGradient(this.x, this.y, this.sz, this.sz);
+                        //this.g.addColorStop(0, 'hsla(255,255%,255%,1)');
+                        //this.g.addColorStop(1, 'hsla(255,255%,255%,0)');
                         //this.g = $.blendColor(255,255,255, 0.5);
 
                         $.moveTo(this.x, this.y);
-                        $.fillStyle = this.g;
+                        $.fillStyle = 'rgba(246, 249, 232, 1)';
                         $.beginPath();
-                        $.arc(this.x, this.y, this.sz, 0, Math.PI * 2, true);
+                        if (this.sz > 8) {
+                            this.sz = 8;
+                        }
+                        $.rect(this.x, this.y, this.sz, this.sz);
+                        //$.arc(this.x, this.y, this.sz, 0, Math.PI * 2, true);
                         $.fill();
+
                     }
                 }
             }
@@ -240,6 +247,7 @@ class MainPage extends Component {
                     smoothScrolling
                     onScroll={this.handleOnScrollEvent}
                 >
+                    <div className='snow_background'/>
                     <div className='wall_background'/>
 
                     <Trailer

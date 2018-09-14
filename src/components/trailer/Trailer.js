@@ -24,7 +24,7 @@ class Trailer extends Component {
     render() {
         const {width} = this.props;
 
-        let videoWidth = 640;
+        let videoWidth = 512;
         if (width < 600) {
             videoWidth = 224;
         } else if (width < 850) {
@@ -42,7 +42,18 @@ class Trailer extends Component {
         // TODO Video on safari doesn't load. Put some placeholder and link instead.
         return (
             <div className='Trailer__root' style={{width: this.props.width}}>
-                <p className='Trailer__title'>The Ministry of Broadcast game is developed by Twin Petes studio from Brno, under creative direction of the Fuchs+Dachs studio from Prague.</p>
+                <p className='Trailer__title'>Ministry of Broadcast is narrative-drive indie single-player 2D pixel art
+                    platform game. The story is set in a country which has been divided by the walls and the only way
+                    how to cross the borders to the other side is to win in a TV reality show. The overall mood and tone
+                    is dark like Orwell’s 1984 combined with the hypocritical shine and glamour of the modern TV reality
+                    shows. Even though it is touching some of the dark themes, game is fun, sarcastic and it plays jokes
+                    on game characters, but also on the gamers.</p>
+
+                <p className='Trailer__title__small'>
+                    Ministry of Broadcast is narrative-drive indie single-player 2D pixel art
+                    platform game. The story is set in a country which has been divided by the walls and the only way
+                    how to cross the borders to the other side is to win in a TV reality show.
+                </p>
 
                 <div className='Trailer__content'>
                     <img src={tower_blurred} className='Trailer__tower__blurred' alt=''/>

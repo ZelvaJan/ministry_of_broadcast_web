@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import warnSign from '../../assets/warn_sign.png';
 import tree_blurred from '../../assets/tree_blurred.png';
 import poster from '../../assets/poster.png';
+import formwurx from '../../assets/formwurx.png';
 
 class Toy extends Component {
 
@@ -24,6 +25,11 @@ class Toy extends Component {
                 <div className='Toy__button__wrapper'>
                     <a className="Toy__button" href="https://gum.co/ministryofbroadcast">PRE-ORDER</a>
                     <img className='Toy__warnSign' src={warnSign} alt=''/>
+                </div>
+
+                <div className='Toy__footer'>
+                    <p className='Toy__footer__text'>In collaboration with:</p>
+                    <img className='Toy__footer__logo' src={formwurx} alt='Formwurx logo'/>
                 </div>
             </div>
         )

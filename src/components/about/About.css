@@ -9,7 +9,7 @@
 .About__tree {
     position: absolute;
     left: calc(50% + 550px);
-    bottom: 100px;
+    bottom: 175px;
 }
 
 @media (max-width: 1400px) {
@@ -25,15 +25,11 @@
     justify-content: center;
 }
 
-.About__title {
-    font-size: 18px;
-    font-weight: bold;
-}
-
 .About__text {
     font-size: 14px;
-    max-width: 600px;
+    max-width: 640px;
     margin: 0;
+    padding: 0 5px;
 }
 
 .About__link__wrap {
@@ -55,17 +51,14 @@
 }
 
 .About__room {
-    width: 80%;
-    max-width: 800px;
+    width: 70%;
+    max-width: 600px;
     position: absolute;
     bottom: 0;
     margin-bottom: 100px;
 }
 
 @media (max-width: 500px) {
-    .About__title {
-        font-size: 14px;
-    }
 
     .About__text {
         font-size: 12px;
@@ -76,7 +69,7 @@
     }
 
     .About__room {
-        margin-bottom: 70px;
+        margin-bottom: 50px;
     }
 }
 

@@ -1,6 +1,6 @@
 .Trailer__root {
     position: relative;
-    padding-top: 200px;
+    padding-top: 180px;
     box-sizing: border-box;
     z-index: 10;
     height: 100%;
@@ -12,12 +12,16 @@
     overflow: hidden;
 }
 
-.Trailer__title {
-    max-width: 600px;
+.Trailer__title, .Trailer__title__small {
+    max-width: 700px;
     font-size: 14px;
     margin: 0 auto;
     padding-bottom: 10px;
 }
+.Trailer__title__small {
+    display: none;
+}
+
 .Trailer__content {
     display: flex;
     flex-direction: column;
@@ -46,8 +50,8 @@
 }
 
 .Trailer__video__wrapper {
-    width: 814px;
-    height: 590px;
+    width: 648px;
+    height: 470px;
     margin: 0 auto;
     position: relative;
 }
@@ -68,8 +72,8 @@
 
 .Trailer__video {
     position: absolute;
-    top: 115px; /* Adjust top position */
-    left: 86px; /* Adjust left position */
+    top: 91px; /* Adjust top position */
+    left: 67px; /* Adjust left position */
     z-index: 5;
 }
 
@@ -170,6 +174,15 @@
 
     .Trailer__footer__text {
         font-size: 14px;
+    }
+
+    .Trailer__title {
+        display: none;
+    }
+
+    .Trailer__title__small {
+        display: block;
+        font-size: 12px;
     }
 }
 

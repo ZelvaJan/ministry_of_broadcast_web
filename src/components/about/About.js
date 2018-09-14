@@ -18,10 +18,12 @@ class About extends Component {
                 <img src={tree} className='About__tree' alt=''/>
 
                 <div className='About__content'>
-                    <p className='About__title'>WHO ARE WE?</p>
-                    <p className='About__text'>We are small game dev studio from Czech Republic... <br/>
-                        Does anyone really read this? If so, please let us know by email and we will be happy to answer
-                        you all the questions in the world.
+                    <p className='About__text'>The Ministry of Broadcast game is developed by Twin Petes studio from
+                        Brno, under creative direction of the Fuchs+Dachs studio from Prague. We are a small , but
+                        diverse team of 4 with really strong synergy, different skillsets but same mindsets. Four people
+                        with shared ideals, dreams, visions and love for internet profanity. Game designers,
+                        advertisers, storytellers or technologists, artists or filmmakers, vegans or carnivores, boys or
+                        girls, sex addicts or good Christians.<br/><span className='BOLD'>We tend to be all of above and then some.</span>
                     </p>
 
                     <div className='About__link__wrap'>

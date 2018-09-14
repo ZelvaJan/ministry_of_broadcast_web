@@ -17,6 +17,10 @@ body, html, #root, .App {
     overflow: auto;
 }
 
+.BOLD {
+    font-weight: bold;
+}
+
 input {
     font-family: 'Saira', sans-serif;
 }

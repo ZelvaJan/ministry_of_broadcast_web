@@ -58,7 +58,7 @@
     border: none;
     font-size: 20px;
     color: #f6f9e8;
-    background-color: #4d7ca7;
+    background-color: #59988f;
     box-sizing: border-box;
     height: 60px;
     line-height: 60px;
@@ -78,6 +78,23 @@
 
 
 .Toy__button:hover {
-    background-color: #4a6893;
+    background-color: #38746b;
     cursor: pointer;
+}
+
+.Toy__footer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.Toy__footer__text {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.Toy__footer__logo {
+    width: 126px;
+    height: 19px;
 }

@@ -24,6 +24,15 @@
     transform: translateY(-250px);
 }
 
+.snow_background {
+    position: absolute;
+    width: 100%;
+    height: 255px;
+    bottom: 0;
+    left: 0;
+    background-color: #f6f9e8;
+}
+
 .MainPage__scrollArea {
     width: 100%;
     height: 100%;
@@ -101,5 +110,9 @@
     .wall_background {
         background-size: 75%;
         transform: translateY(-100px);
+    }
+
+    .snow_background {
+        height: 120px;
     }
 }

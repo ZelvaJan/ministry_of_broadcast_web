@@ -39,6 +39,26 @@
     text-align: left;
     width: 90%;
     max-width: 700px;
+    margin-top: 125px;
+}
+
+.Subscribe__thankyou {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.Subscribe__title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.Subscribe__text {
+    font-size: 14px;
+    max-width: 600px;
+    margin-top: 0;
 }
 
 @media (max-width: 800px) {
@@ -69,7 +89,7 @@
     margin-right: auto;
     left: 0;
     right: 0;
-    bottom: 55px;
+    bottom: 20px;
 }
 
 .Subscribe__social__title {
@@ -159,7 +179,7 @@
     border: none;
     letter-spacing: .03em;
     color: #f6f9e8;
-    background-color: #4d7ca7;
+    background-color: #59988f;
     box-sizing: border-box;
     height: 60px;
     width: 60px;
@@ -172,7 +192,7 @@
 }
 
 #mc-embedded-subscribe.button:hover {
-    background-color: #3C5F86;
+    background-color: #38746b;
     cursor: pointer;
 }
 
