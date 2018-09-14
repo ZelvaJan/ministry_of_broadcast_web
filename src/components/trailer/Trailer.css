@@ -39,7 +39,7 @@
 
 .Trailer__poster {
     position: absolute;
-    left: calc(50% - 612px);
+    left: calc(50% - 500px);
     bottom: 265px;
 }
 
