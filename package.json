@@ -1,6 +1,6 @@
 {
   "name": "ministry_of_broadcast_web",
-  "version": "0.8.3",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "babel-eslint": "8.2.1",
