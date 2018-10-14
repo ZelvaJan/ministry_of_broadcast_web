@@ -228,13 +228,18 @@ export default class ScrollArea extends React.Component {
             //console.log("Scroll: ", newLeftPos);
             const positionDiff = newLeftPos - oldLeftPos;
             if (Math.abs(positionDiff) > 10) {
+                // Determine end position
                 const page = Math.round(oldLeftPos / pageWidth);
-
                 let resultPos = page * pageWidth;
-                if (positionDiff > 0) {
-                    resultPos = (page + 1) * pageWidth;
+                if (eventType === eventTypes.api) { // Force new position. When clicked on link
+                    resultPos = newLeftPos;
                 } else {
-                    resultPos = (page - 1) * pageWidth;
+                    resultPos = page * pageWidth;   // Calculate new position on scroll or touch
+                    if (positionDiff > 0) {
+                        resultPos = (page + 1) * pageWidth;
+                    } else {
+                        resultPos = (page - 1) * pageWidth;
+                    }
                 }
 
                 console.log("New position: ", resultPos);

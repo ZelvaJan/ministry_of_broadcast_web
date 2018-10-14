@@ -22,9 +22,9 @@ class Toy extends Component {
 
                 <div className='Toy__figure'/>
 
-                <div className='Toy__button__wrapper'>
-                    <a className="Toy__button" href="https://gum.co/ministryofbroadcast">PRE-ORDER</a>
-                    <img className='Toy__warnSign' src={warnSign} alt=''/>
+                <div className='Tou__button_wrapper link__button__wrapper'>
+                    <a className="link__button" href="https://gum.co/ministryofbroadcast">PRE-ORDER</a>
+                    <img className='link__warnSign' src={warnSign} alt=''/>
                 </div>
 
                 <div className='Toy__footer'>

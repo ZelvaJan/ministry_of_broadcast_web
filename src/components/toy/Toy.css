@@ -41,45 +41,11 @@
     background-size: cover;
 }
 
-
-.Toy__button__wrapper {
-    width: 300px;
-    margin: 0 auto;
+.Tou__button_wrapper {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-}
-
-.Toy__button {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    border: none;
-    font-size: 20px;
-    color: #f6f9e8;
-    background-color: #59988f;
-    box-sizing: border-box;
-    height: 60px;
-    line-height: 60px;
-    margin: 0;
-    vertical-align: top;
-    outline: none;
-    text-decoration: none;
-}
-
-.Toy__warnSign {
-    position: absolute;
-    left: 0;
-    top: 60px;
-    width: 100%;
-    height: auto;
-}
-
-
-.Toy__button:hover {
-    background-color: #38746b;
-    cursor: pointer;
 }
 
 .Toy__footer {

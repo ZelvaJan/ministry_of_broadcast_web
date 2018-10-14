@@ -6,7 +6,6 @@ body, html, #root, .App {
     font-family: 'Saira', sans-serif;
     color: #13303f;
     overflow: hidden;
-    touch-action: none
 }
 
 #root {
@@ -28,4 +27,42 @@ input {
 
 .hidden {
     display: none;
+}
+
+/********************************************/
+/**************** Button link  **************/
+.link__button__wrapper {
+    width: 300px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.link__button {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    color: #f6f9e8;
+    background-color: #59988f;
+    box-sizing: border-box;
+    height: 60px;
+    line-height: 60px;
+    margin: 0;
+    vertical-align: top;
+    outline: none;
+    text-decoration: none;
+}
+
+.link__warnSign {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    width: 100%;
+    height: auto;
+}
+
+.link__button:hover {
+    background-color: #38746b;
+    cursor: pointer;
 }

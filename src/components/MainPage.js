@@ -84,7 +84,7 @@ class MainPage extends Component {
 
             let snow, arr = [];
             let num = 600, sp = 1;
-            let sc = 1.3, t = 0, mv = 10, min = 0.5, max = 2;
+            let sc = 1.3, mv = 10, min = 0.5, max = 2;
             if (width < 800) {
                 num = 200;
                 mv = 5;

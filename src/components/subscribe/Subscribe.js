@@ -32,7 +32,8 @@ class Subscribe extends Component {
 
                     <div className='Subscribe__content Subscribe__thankyou'>
                         <p className='Subscribe__title'>THANKS FOR SUBSCRIBING</p>
-                        <p className='Subscribe__text'>We will make sure we keep you update on our progress,<br/> game updates and fun content.<br/> Don’t
+                        <p className='Subscribe__text'>We will make sure we keep you update on our progress,<br/> game
+                            updates and fun content.<br/> Don’t
                             worry about spam, we hate it as well.</p>
                     </div>
 
@@ -48,6 +49,14 @@ class Subscribe extends Component {
 
                     <div className='Subscribe__content'>
                         {/*MailChimp signUp form*/}
+                        <h4 className='Subscribe__action__title'>Interested?</h4>
+                        <div className='link__button__wrapper'>
+                            <a className="link__button"
+                               href="https://store.steampowered.com/app/874040/Ministry_of_Broadcast/" target='_blank'
+                               rel='noopener noreferrer'>WISHLIST ON STEAM</a>
+                            <img className='link__warnSign' src={warnSign} alt=''/>
+                        </div>
+                        <p className='Subscribe__or__text'>or subscribe</p>
                         <div id='mc_embed_signup' className="Subscribe__wrapper">
                             <form method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
                                   action="https://ministryofbroadcast.us18.list-manage.com/subscribe/post?u=3a04c6ba139b2a873a72515e4&amp;id=4ea83437ad"
