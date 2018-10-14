@@ -8,7 +8,7 @@ import Toy from "./toy/Toy";
 import logoV2 from '../assets/logo_v2.png';
 import {getURLParameter} from "../App";
 
-const menuItem = {
+export const menuItem = {
     game: 1,
     subscribe: 2,
     about: 3,
@@ -144,71 +144,8 @@ class MainPage extends Component {
         });
     }
 
-    handleScrollToPosition = (position) => {
-        console.log("New position: ", position);
-        if (this.scrollArea && !isNaN(position)) {
-            //console.warn("Manual scroll: " + position);
-            this.scrollArea.scrollXTo(position);
-
-            const {width} = this.state;
-            if (position < (width / 2)) {
-                this.setState({menuSelected: menuItem.game})
-            } else if (position >= (width / 2) && position < (1.5 * width)) {
-                this.setState({menuSelected: menuItem.subscribe})
-            } else if (position >= (1.5 * width) && position < (2.5 * width)) {
-                this.setState({menuSelected: menuItem.about})
-            } else {
-                this.setState({menuSelected: menuItem.toy})
-            }
-        } else {
-            console.error("Missing scrollArea");
-        }
-    };
-
-    handleOnScrollEvent = (value) => {
-        //console.log("New scroll event: ", value);
-        if (this.scrollArea) {
-            if (value && value.leftPosition) {
-                //console.log("Scroll: ", value);
-                const {width} = this.state;
-                if (value.leftPosition % width !== 0) {
-                    const page = Math.round(value.leftPosition / width);
-                    let sideVal = value.leftPosition - page * width;
-                    if (Math.abs(sideVal) < 10) {
-                        sideVal = 0;
-                    }
-
-                    //if (this.scrollTimeout) clearTimeout(this.scrollTimeout);
-                    if (!this.cooldownTimeout && !this.scrollTimeout) {
-                        this.scrollArea.disableScroll(true);
-                        this.scrollTimeout = setTimeout(() => {
-                            this.cooldownTimeout = setTimeout(() => {
-                                this.cooldownTimeout = null;
-                                this.scrollArea.disableScroll(false);
-                            }, 450);
-                            let resultPos = page * width;
-                            if (sideVal !== 0) {
-                                if (sideVal > 0) {
-                                    resultPos = (page + 1) * width;
-                                } else {
-                                    resultPos = (page - 1) * width;
-                                }
-                            }
-
-                            //console.warn("Side val: " + sideVal + ". Result pos: " + resultPos);
-                            this.handleScrollToPosition(resultPos);
-                            this.scrollTimeout = null;
-                        }, 120);
-                    }
-                } else {
-                    console.log("Skip small change")
-                }
-            } else {
-                console.log("Value didn't exists");
-            }
-        } else {
-            console.error("Missing scrollArea");
-        }
+    updateMenuItem = (newItem) => {
+        this.setState({menuSelected: newItem});
     };
 
     render() {
@@ -245,9 +182,11 @@ class MainPage extends Component {
                     horizontal={true}
                     vertical={false}
                     swapWheelAxes={true}
+                    pageWidth={this.state.width}
                     forceWidth={4 * this.state.width}
                     smoothScrolling
                     onScroll={this.handleOnScrollEvent}
+                    updateMenuItem={this.updateMenuItem}
                 >
                     <div className='snow_background'/>
                     <div className='wall_background'/>

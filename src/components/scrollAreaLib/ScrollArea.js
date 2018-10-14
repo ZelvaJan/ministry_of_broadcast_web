@@ -8,6 +8,7 @@ import {
     findDOMNode, warnAboutFunctionChild, warnAboutElementChild, positiveOrZero, modifyObjValues,
 } from './utils';
 import ScrollBar from './Scrollbar';
+import {menuItem} from "../MainPage";
 
 const eventTypes = {
     wheel: 'wheel',
@@ -204,10 +205,95 @@ export default class ScrollArea extends React.Component {
     }
 
     setStateFromEvent(newState, eventType) {
+        const {pageWidth} = this.props;
+
         if (this.props.onScroll) {
             this.props.onScroll(newState);
         }
-        this.setState({...newState, eventType});
+
+       // this.setState({...newState, eventType});
+        /* newState: {
+        containerHeight: 544
+        containerWidth: 320
+        leftPosition: 10
+        realHeight: 544
+        realWidth: 1280
+        topPosition: 0
+        } */
+
+        console.log("NewEvent: ", newState.leftPosition);
+        const newLeftPos = (newState && newState.hasOwnProperty('leftPosition')) ? newState.leftPosition : null;
+        const oldLeftPos = this.state.leftPosition;
+        if (newLeftPos !== null) {
+            //console.log("Scroll: ", newLeftPos);
+            const positionDiff = newLeftPos - oldLeftPos;
+            if (Math.abs(positionDiff) > 10) {
+                const page = Math.round(oldLeftPos / pageWidth);
+
+                let resultPos = page * pageWidth;
+                if (positionDiff > 0) {
+                    resultPos = (page + 1) * pageWidth;
+                } else {
+                    resultPos = (page - 1) * pageWidth;
+                }
+
+                console.log("New position: ", resultPos);
+                if (resultPos < (pageWidth / 2)) {
+                    this.props.updateMenuItem(menuItem.game)
+                } else if (resultPos >= (pageWidth / 2) && resultPos < (1.5 * pageWidth)) {
+                    this.props.updateMenuItem( menuItem.subscribe)
+                } else if (resultPos >= (1.5 * pageWidth) && resultPos < (2.5 * pageWidth)) {
+                    this.props.updateMenuItem(menuItem.about)
+                } else {
+                    this.props.updateMenuItem(menuItem.toy)
+                }
+
+                newState.leftPosition = resultPos;
+                this.setState({...newState, eventType});
+                /*
+                //if (this.scrollTimeout) clearTimeout(this.scrollTimeout);
+                if (!this.cooldownTimeout && !this.scrollTimeout) {
+                    this.scrollArea.disableScroll(true);
+                    this.scrollTimeout = setTimeout(() => {
+                        this.cooldownTimeout = setTimeout(() => {
+                            this.cooldownTimeout = null;
+                            this.scrollArea.disableScroll(false);
+                        }, 350);
+                        let resultPos = page * pageWidth;
+                        if (sideVal !== 0) {
+                            if (sideVal > 0) {
+                                resultPos = (page + 1) * pageWidth;
+                            } else {
+                                resultPos = (page - 1) * pageWidth;
+                            }
+                        }
+
+                        //console.warn("Side val: " + sideVal + ". Result pos: " + resultPos);
+                        this.scrollTimeout = null;
+
+
+                        console.log("New position: ", resultPos);
+                        if (resultPos < (pageWidth / 2)) {
+                            this.props.updateMenuItem(menuItem.game)
+                        } else if (resultPos >= (pageWidth / 2) && resultPos < (1.5 * pageWidth)) {
+                            this.props.updateMenuItem( menuItem.subscribe)
+                        } else if (resultPos >= (1.5 * pageWidth) && resultPos < (2.5 * pageWidth)) {
+                            this.props.updateMenuItem(menuItem.about)
+                        } else {
+                            this.props.updateMenuItem(menuItem.toy)
+                        }
+
+                        newState.leftPosition = resultPos;
+                        this.setState({...newState, eventType});
+                    }, 120);
+                }
+                */
+            } else {
+                console.log("Skip small change")
+            }
+        } else {
+            console.error("Missing left position data");
+        }
     }
 
     handleTouchStart(e) {
@@ -251,7 +337,7 @@ export default class ScrollArea extends React.Component {
                 timestamp: Date.now()
             };
 
-            this.setStateFromEvent(this.composeNewState(-deltaX, -deltaY));
+            //this.setStateFromEvent(this.composeNewState(-deltaX, -deltaY));
         }
     }
 
@@ -264,7 +350,7 @@ export default class ScrollArea extends React.Component {
         if (typeof deltaX === 'undefined') deltaX = 0;
         if (typeof deltaY === 'undefined') deltaY = 0;
         if (Date.now() - timestamp < 200) {
-           this.setStateFromEvent(this.composeNewState(-deltaX * 10, -deltaY * 10), eventTypes.touchEnd);
+           this.setStateFromEvent(this.composeNewState(-deltaX * 15, -deltaY * 10), eventTypes.touchEnd);
         }
 
         this.eventPreviousValues = {
@@ -547,6 +633,8 @@ ScrollArea.propTypes = {
     stopScrollPropagation: PropTypes.bool,
     focusableTabIndex: PropTypes.number,
     forceWidth: PropTypes.number,
+    pageWidth: PropTypes.number,
+    updateMenuItem: PropTypes.func,
 };
 
 ScrollArea.defaultProps = {
