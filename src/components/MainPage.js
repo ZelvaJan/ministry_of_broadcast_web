@@ -43,91 +43,14 @@ class MainPage extends Component {
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
+    static canvas = null;
+    static endAnimationCycle = false;
+    static canvWidth = null;
+    static canvHeight = null;
+
     componentDidMount() {
         window.addEventListener('resize', this.updateWindowDimensions);
-
-        var c = document.getElementById('canv');
-        if (c) {
-            var $ = c.getContext("2d");
-            var w = c.width = window.innerWidth,
-                h = c.height = window.innerHeight;
-            var f;
-
-            const width = this.state.width;
-            Snowy();
-
-            function Snowy() {
-                var snow, arr = [];
-                var num = 600, tsc = 1, sp = 1;
-                var sc = 1.3, t = 0, mv = 10, min = 0.5, max = 2;
-                if (width < 800) {
-                    num = 200;
-                    mv = 5;
-                }
-
-                for (var i = 0; i < num; ++i) {
-                    snow = new Flake();
-                    snow.y = Math.random() * (h + 50);
-                    snow.x = Math.random() * w;
-                    snow.t = Math.random() * (Math.PI * 2);
-                    snow.sz = (100 / (10 + (Math.random() * 100))) * sc;
-                    snow.sp = (Math.pow(snow.sz * .8, 2) * .15) * sp;
-                    snow.sp = snow.sp < min ? min : snow.sp;
-                    snow.sp = snow.sp > max ? max : snow.sp;
-                    // console.log(snow.sp);
-                    arr.push(snow);
-                }
-                go();
-
-                function go() {
-                    window.requestAnimationFrame(go);
-                    $.clearRect(0, 0, w, h);
-                    //$.fillStyle = 'hsla(242, 95%, 3%, 1)';
-                    //$.fillRect(0, 0, w, h);
-                    //$.fill();
-                    for (var i = 0; i < arr.length; ++i) {
-                        f = arr[i];
-                        f.t += .05;
-                        f.t = f.t >= Math.PI * 2 ? 0 : f.t;
-                        f.y += f.sp;
-                        //f.x += Math.sin(f.t * tsc) * (f.sz * .3) + Math.random() * 3;
-                        f.x = f.x + Math.random() * 1.5;
-                        if (f.y > h + 50) f.y = -10 - Math.random() * mv;
-                        if (f.x > w + mv) f.x = -mv;
-                        if (f.x < -mv) f.x = w + mv;
-                        f.draw();
-                    }
-                }
-
-                function Flake() {
-                    this.draw = function () {
-
-                        //this.g = $.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.sz);
-                        //this.g = $.createLinearGradient(this.x, this.y, this.sz, this.sz);
-                        //this.g.addColorStop(0, 'hsla(255,255%,255%,1)');
-                        //this.g.addColorStop(1, 'hsla(255,255%,255%,0)');
-                        //this.g = $.blendColor(255,255,255, 0.5);
-
-                        $.moveTo(this.x, this.y);
-                        $.fillStyle = 'rgba(246, 249, 232, 1)';
-                        $.beginPath();
-                        if (this.sz > 8) {
-                            this.sz = 8;
-                        }
-                        $.rect(this.x, this.y, this.sz, this.sz);
-                        //$.arc(this.x, this.y, this.sz, 0, Math.PI * 2, true);
-                        $.fill();
-
-                    }
-                }
-            }
-
-            /*________________________________________*/
-            window.addEventListener('resize', function () {
-                c.width = w = window.innerWidth;
-                c.height = h = window.innerHeight;
-            }, false);
-        }
+        this.Snowy();
     }
 
     componentWillUnmount() {
@@ -137,12 +60,86 @@ class MainPage extends Component {
     }
 
     updateWindowDimensions() {
+        MainPage.canvas.width = MainPage.canvWidth = window.innerWidth;
+        MainPage.canvas.height = MainPage.canvHeight = window.innerHeight;
+        MainPage.endAnimationCycle = true;
+        this.Snowy();
+
         const newWidth = Math.round(window.innerWidth);
         console.warn("New width: " + newWidth);
         this.setState({
             width: newWidth
         });
     }
+
+    Snowy = () => {
+        MainPage.canvas = document.getElementById('canv');
+        if (MainPage.canvas) {
+            const $ = MainPage.canvas.getContext("2d");
+            MainPage.canvWidth = MainPage.canvas.width = window.innerWidth;
+            MainPage.canvHeight = MainPage.canvas.height = window.innerHeight;
+            let f;
+
+            const width = this.state.width;
+
+            let snow, arr = [];
+            let num = 600, sp = 1;
+            let sc = 1.3, t = 0, mv = 10, min = 0.5, max = 2;
+            if (width < 800) {
+                num = 200;
+                mv = 5;
+            }
+
+            for (let i = 0; i < num; ++i) {
+                snow = new Flake();
+                snow.y = Math.random() * (MainPage.canvHeight + 50);
+                snow.x = Math.random() * MainPage.canvWidth;
+                snow.t = Math.random() * (Math.PI * 2);
+                snow.sz = (100 / (10 + (Math.random() * 100))) * sc;
+                snow.sp = (Math.pow(snow.sz * .8, 2) * .15) * sp;
+                snow.sp = snow.sp < min ? min : snow.sp;
+                snow.sp = snow.sp > max ? max : snow.sp;
+                // console.log(snow.sp);
+                arr.push(snow);
+            }
+            go();
+
+            function go() {
+                if (!MainPage.endAnimationCycle) {
+                    window.requestAnimationFrame(go);   // Request another animation step
+                } else {
+                    MainPage.endAnimationCycle = false;
+                }
+
+                $.clearRect(0, 0, MainPage.canvWidth, MainPage.canvHeight); // Clear canvas
+
+                for (let i = 0; i < arr.length; ++i) { // Move flakes and draw them
+                    f = arr[i];
+                    f.t += .05;
+                    f.t = f.t >= Math.PI * 2 ? 0 : f.t;
+                    f.y += f.sp;
+                    f.x = f.x + Math.random() * 1.5;
+                    if (f.y > MainPage.canvHeight + 50) f.y = -10 - Math.random() * mv;
+                    if (f.x > MainPage.canvWidth + mv) f.x = -mv;
+                    if (f.x < -mv) f.x = MainPage.canvWidth + mv;
+                    f.draw();
+                }
+            }
+
+            function Flake() {
+                this.draw = function () {
+                    $.moveTo(this.x, this.y);
+                    $.fillStyle = 'rgba(246, 249, 232, 1)';
+                    $.beginPath();
+                    if (this.sz > 8) {
+                        this.sz = 8;
+                    }
+                    $.rect(this.x, this.y, this.sz, this.sz);
+                    $.fill();
+                }
+            }
+        }
+    };
 
     updateMenuItem = (newItem) => {
         this.setState({menuSelected: newItem});
@@ -162,14 +159,14 @@ class MainPage extends Component {
 
                 <div className='page__header'>
                     <span className={`${menuSelected === menuItem.game ? 'page__header__selected' : ''}`}
-                          onClick={() => this.handleScrollToPosition(0)}>THE GAME</span>
+                          onClick={() => {if (this.scrollArea) this.scrollArea.scrollXTo(0)}}>THE GAME</span>
                     <span className={`${menuSelected === menuItem.subscribe ? 'page__header__selected' : ''}`}
-                          onClick={() => this.handleScrollToPosition(width)}>SUBSCRIBE</span>
+                          onClick={() => {if (this.scrollArea) this.scrollArea.scrollXTo(width)}}>SUBSCRIBE</span>
                     <img src={logoV2} className='page__header_logo' alt='Company logo'/>
                     <span className={`${menuSelected === menuItem.about ? 'page__header__selected' : ''}`}
-                          onClick={() => this.handleScrollToPosition(2 * width)}>ABOUT</span>
+                          onClick={() => {if (this.scrollArea) this.scrollArea.scrollXTo(2 * width)}}>ABOUT</span>
                     <span className={`${menuSelected === menuItem.toy ? 'page__header__selected' : ''}`}
-                          onClick={() => this.handleScrollToPosition(3 * width)}>THE TOY</span>
+                          onClick={() => {if (this.scrollArea) this.scrollArea.scrollXTo(3 * width)}}>THE TOY</span>
                 </div>
 
                 <ScrollArea
@@ -185,7 +182,6 @@ class MainPage extends Component {
                     pageWidth={this.state.width}
                     forceWidth={4 * this.state.width}
                     smoothScrolling
-                    onScroll={this.handleOnScrollEvent}
                     updateMenuItem={this.updateMenuItem}
                 >
                     <div className='snow_background'/>

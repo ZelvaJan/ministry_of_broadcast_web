@@ -64,12 +64,13 @@
 }
 
 .page__header span {
-    margin: 10px 20px 0;
+    margin: 0 20px;
 }
 
 .page__header_logo {
     width: 65%;
     max-width: 380px;
+    margin-bottom: 10px;
 }
 
 @media (max-width: 800px) {
@@ -86,25 +87,25 @@
     .page__header span:nth-child(1) {
         position: absolute;
         left: 0;
-        top: 30px;
+        top: 40px;
     }
 
     .page__header span:nth-child(2) {
         position: absolute;
         left: 25px;
-        top: 55px;
+        top: 65px;
     }
 
     .page__header span:nth-child(4) {
         position: absolute;
         right: 0;
-        top: 30px;
+        top: 40px;
     }
 
     .page__header span:nth-child(5) {
         position: absolute;
         right: 25px;
-        top: 55px;
+        top: 65px;
     }
 
     .wall_background {
