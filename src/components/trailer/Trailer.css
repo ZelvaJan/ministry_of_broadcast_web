@@ -1,6 +1,6 @@
 .Trailer__root {
     position: relative;
-    padding-top: 180px;
+    padding-top: 140px;
     box-sizing: border-box;
     z-index: 10;
     height: 100%;
@@ -27,7 +27,8 @@
     flex-direction: column;
     justify-content: flex-end;
     flex: 1 1 auto;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
+    width: 100%;
 }
 
 .Trailer__tower__blurred {
@@ -35,12 +36,14 @@
     left: calc(50% - 1350px);
     bottom: 0;
     z-index: 1;
+    user-select: none;
 }
 
 .Trailer__poster {
     position: absolute;
     left: calc(50% - 500px);
     bottom: 265px;
+    user-select: none;
 }
 
 .Trailer__board {
@@ -83,7 +86,11 @@
     right: 20px;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 800px) {
+    .Trailer__root {
+        padding-top: 115px;
+    }
+
     .Trailer__video__wrapper {
         width: 570px;
         height: 414px;
@@ -93,13 +100,18 @@
         top: 81px; /* Adjust top position */
         left: 60px; /* Adjust left position */
     }
-
-    .Trailer__content {
-        padding-bottom: 52px;
-    }
 }
 
 @media (max-width: 600px) {
+    .Trailer__title {
+        display: none;
+    }
+
+    .Trailer__title__small {
+        display: block;
+        font-size: 12px;
+    }
+
     .Trailer__video__wrapper {
         width: 285px;
         height: 206px;
@@ -109,95 +121,45 @@
         top: 40px; /* Adjust top position */
         left: 30px; /* Adjust left position */
     }
-}
 
+    .Trailer__scrollText {
+        bottom: 5px;
+        right: 10px;
+    }
+}
 
 
 /*********** Footer ************/
-.Trailer__footer__wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex: 1;
-    max-height: 150px;
-}
 .Trailer__footer {
-    margin-top: 10px;
+    width: 100%;
+    max-height: 150px;
+    flex: 1 0 50px;
     display: flex;
-    justify-content: space-around;
-    text-align: left;
-    flex: 1 1 80px;
-    max-height: 120px;
-    max-width: 600px;
+    max-width: 650px;
+    margin: 10px auto 0 auto;
+
+    position: relative;
 }
 
-.Trailer__footer__block {
-    margin: 4px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+.Trailer__badge__wrapper {
+    flex: 1 1 50px;
 }
 
-.Trailer__footer__block p {
-    margin: 0;
+.Trailer__badge {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /*
+    background: url("../../assets/best_gameplay.png") no-repeat top left transparent;
+    background-size: contain;
+    */
+    /*
+    flex: 1;
+    object-fit: contain;
+    */
+
+
 }
-
-.Trailer__awards__title {
-    font-size: 20px;
-    color: #bb3628;
-    font-weight: bold;
-}
-
-.Trailer__delimiter {
-    width: 50px;
-    height: 2px;
-    background-color: #5a978f;
-}
-
-.Trailer__nomination__title {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.Trailer__footer__text {
-    font-size: 16px;
-}
-
-.Trailer__footer__hidden {
-    color: #a3a889;
-}
-
-@media (max-width: 600px) {
-    .Trailer__nomination__title {
-        font-size: 18px;
-    }
-
-    .Trailer__footer__text {
-        font-size: 14px;
-    }
-
-    .Trailer__title {
-        display: none;
-    }
-
-    .Trailer__title__small {
-        display: block;
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 400px) {
-    .Trailer__nomination__title {
-        font-size: 16px;
-    }
-
-    .Trailer__footer__text {
-        font-size: 12px;
-    }
-}
-
-
-
 
 
 /**************************************************************/

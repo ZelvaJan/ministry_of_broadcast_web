@@ -166,10 +166,10 @@ class MainPage extends Component {
     };
 
     handleOnScrollEvent = (value) => {
-        console.log("New scroll event: ", value);
+        //console.log("New scroll event: ", value);
         if (this.scrollArea) {
             if (value && value.leftPosition) {
-                console.log("Scroll: ", value);
+                //console.log("Scroll: ", value);
                 const {width} = this.state;
                 if (value.leftPosition % width !== 0) {
                     const page = Math.round(value.leftPosition / width);
@@ -200,6 +200,8 @@ class MainPage extends Component {
                             this.scrollTimeout = null;
                         }, 120);
                     }
+                } else {
+                    console.log("Skip small change")
                 }
             } else {
                 console.log("Value didn't exists");

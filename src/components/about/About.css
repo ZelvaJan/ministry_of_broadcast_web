@@ -1,6 +1,6 @@
 .About__root {
     position: relative;
-    padding-top: 200px;
+    padding-top: 140px;
     box-sizing: border-box;
     z-index: 10;
     height: 100%;
@@ -37,6 +37,7 @@
     margin: 20px;
     font-size: 20px;
     border-bottom: #bb3628 2px solid;
+    z-index: 1;
 }
 
 .About__link__wrap a {
@@ -57,6 +58,13 @@
     bottom: 0;
     margin-bottom: 100px;
 }
+
+@media (max-width: 800px) {
+    .About__root {
+        padding-top: 115px;
+    }
+}
+
 
 @media (max-width: 500px) {
 

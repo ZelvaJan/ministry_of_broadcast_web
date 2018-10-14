@@ -21,13 +21,13 @@
     height: 100%;
     position: absolute;
     background: url("../assets/bg_wall.png") repeat-x left bottom;
-    transform: translateY(-250px);
+    transform: translateY(-260px);
 }
 
 .snow_background {
     position: absolute;
     width: 100%;
-    height: 255px;
+    height: 260px;
     bottom: 0;
     left: 0;
     background-color: #f6f9e8;
@@ -36,16 +36,18 @@
 .MainPage__scrollArea {
     width: 100%;
     height: 100%;
+    overflow: hidden
+    /*touch-action: manipulation;*/
 }
 
 .MainPage__scrollWrapper {
     height: 100%;
     display: flex;
+    overflow: hidden
 }
 
 .page__header {
-    height: 170px;
-    padding-bottom: 30px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,57 +64,62 @@
 }
 
 .page__header span {
-    margin: 0 20px 20px;
+    margin: 10px 20px 0;
 }
 
 .page__header_logo {
-    width: 70%;
+    width: 65%;
     max-width: 380px;
 }
 
 @media (max-width: 800px) {
     .page__header {
         display: block;
-        margin-top: 20px;
+        margin-top: 10px;
+        height: 95px;
+    }
+
+    .page__header span {
+        font-size: 14px;
     }
 
     .page__header span:nth-child(1) {
         position: absolute;
         left: 0;
-        top: 85px;
+        top: 30px;
     }
 
     .page__header span:nth-child(2) {
         position: absolute;
         left: 25px;
-        top: 115px;
+        top: 55px;
     }
 
     .page__header span:nth-child(4) {
         position: absolute;
         right: 0;
-        top: 85px;
+        top: 30px;
     }
 
     .page__header span:nth-child(5) {
         position: absolute;
         right: 25px;
-        top: 115px;
+        top: 55px;
     }
 
     .wall_background {
         background-size: 75%;
-        transform: translateY(-170px);
+        transform: translateY(-240px);
     }
 }
 
 @media (max-width: 400px) {
     .wall_background {
         background-size: 75%;
-        transform: translateY(-100px);
+        transform: translateY(-200px);
     }
 
     .snow_background {
-        height: 120px;
+        height: 220px;
     }
 }

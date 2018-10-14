@@ -6,6 +6,8 @@ import tower_blurred from '../../assets/tower_blurred.png';
 import poster from '../../assets/poster.png';
 import board from '../../assets/board.png';
 import tower from '../../assets/tower.png';
+import badge_gameplay from '../../assets/best_gameplay.png';
+import badge_art from '../../assets/best_art.png';
 
 class Trailer extends Component {
 
@@ -69,28 +71,12 @@ class Trailer extends Component {
                         />
                     </div>
 
-                    <div className='Trailer__footer__wrapper'>
-                        <div className='Trailer__footer'>
-                            <div className='Trailer__footer__block'>
-                                <p className='Trailer__awards__title'>WINNER:</p>
-                                <div className='Trailer__delimiter'/>
-                                <p className='Trailer__footer__text'>Best Gameplay</p>
-                                <p className='Trailer__footer__text Trailer__footer__hidden'>Game Access '18</p>
-                            </div>
-
-                            <div className='Trailer__footer__block'>
-                                <p className='Trailer__nomination__title'>NOMINEE:</p>
-                                <div className='Trailer__delimiter'/>
-                                <p className='Trailer__footer__text'>Best Game Art</p>
-                                <p className='Trailer__footer__text Trailer__footer__hidden'>Game Access '18</p>
-                            </div>
-
-                            <div className='Trailer__footer__block'>
-                                <p className='Trailer__nomination__title'>NEXT EVENT:</p>
-                                <div className='Trailer__delimiter'/>
-                                <p className='Trailer__footer__text'>TOKYO, Japan</p>
-                                <p className='Trailer__footer__text Trailer__footer__hidden'>TOKYO GAME SHOW</p>
-                            </div>
+                    <div className='Trailer__footer'>
+                        <div className='Trailer__badge__wrapper'>
+                            <img src={badge_gameplay} className='Trailer__badge' alt='Best gameplay award winner' />
+                        </div>
+                        <div className='Trailer__badge__wrapper'>
+                            <img src={badge_art} className='Trailer__badge' alt='Best art nominee' />
                         </div>
                     </div>
 
@@ -104,3 +90,18 @@ class Trailer extends Component {
 }
 
 export default Trailer;
+
+/*
+<div className='Trailer__badge'/>
+<div className='Trailer__badge'/>
+
+
+
+*/
+/*
+<img src={badge_gameplay} className='Trailer__badge' alt='Best gameplay award winner' />
+<img src={badge_art} className='Trailer__badge' alt='Best art nominee' />
+
+<img src={badge_gameplay} className='Trailer__badge' alt='Best gameplay award winner' />
+<img src={badge_art} className='Trailer__badge' alt='Best art nominee' />
+*/

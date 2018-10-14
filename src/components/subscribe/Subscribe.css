@@ -1,6 +1,6 @@
 .Subscribe__root {
     position: relative;
-    padding-top: 200px;
+    padding-top: 140px;
     box-sizing: border-box;
     z-index: 5;
     height: 100%;
@@ -63,6 +63,10 @@
 }
 
 @media (max-width: 800px) {
+    .Subscribe__root {
+        padding-top: 115px;
+    }
+
     .Subscribe__content {
         margin-top: 50px;
     }
@@ -110,7 +114,7 @@
 .Subscribe__wrapper {
     clear: left;
     max-width: 700px;
-    min-width: 320px;
+    min-width: 280px;
     position: relative;
     margin: 0 auto;
 }
